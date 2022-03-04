@@ -1,0 +1,8 @@
+.form-control {
+    border-radius: 10px;
+}
+
+.modal-content {
+    border-radius: 25px;
+    border: none;
+}

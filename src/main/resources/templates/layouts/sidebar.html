@@ -1,0 +1,55 @@
+<div th:fragment="sidebar">
+    <aside class="left-sidebar align-items-center" data-sidebarbg="skin6">
+        <div class="scroll-sidebar">
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li class="sidebar-item">
+                        <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                th:href="@{/}"
+                                aria-expanded="false"
+                        ><i class="mdi mdi-view-dashboard"></i
+                        ><span class="hide-menu">Dashboard</span></a
+                        >
+                    </li>
+                    <li class="sidebar-item">
+                        <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                th:href="@{/products}"
+                                aria-expanded="false"
+                        ><i class="mdi mdi-cellphone-link"></i
+                        ><span class="hide-menu">Products</span></a
+                        >
+                    </li>
+                    <li class="sidebar-item">
+                        <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                th:href="@{/product-categories}"
+                                aria-expanded="false"
+                        ><i class="mdi mdi-cart"></i
+                        ><span class="hide-menu">Product Categories</span></a
+                        >
+                    </li>
+                    <li class="sidebar-item">
+                        <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                th:href="@{/division}"
+                                aria-expanded="false"
+                        ><i class="mdi mdi-account-convert"></i
+                        ><span class="hide-menu">Division</span></a
+                        >
+                    </li>
+                    <li class="sidebar-item">
+                        <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                th:href="@{/users}"
+                                aria-expanded="false"
+                        ><i class="mdi mdi-account-multiple"></i
+                        ><span class="hide-menu">Users</span></a
+                        >
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+</div>

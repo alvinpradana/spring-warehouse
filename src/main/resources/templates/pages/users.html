@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <div th:replace="layouts/tag-head::tag_head"></div>
+    <title>Users | Warehouse</title>
+</head>
+
+<body>
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<div
+        id="main-wrapper"
+        data-layout="vertical"
+        data-navbarbg="skin5"
+        data-sidebartype="full"
+        data-sidebar-position="absolute"
+        data-header-position="absolute"
+        data-boxed-layout="full"
+>
+
+    <!-- Header Fragment -->
+    <div th:replace="layouts/header::header"></div>
+
+    <!-- Sidebar Fragment -->
+    <div th:replace="layouts/sidebar::sidebar"></div>
+
+    <div class="page-wrapper pt-0 mt-0">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-md-flex">
+                                <div>
+                                    <h4 class="card-title">Data Users</h4>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table
+                                        class="table mb-0 table-hover align-middle text-nowrap"
+                                >
+                                    <thead>
+                                    <tr>
+                                        <th class="border-top-0">User Name</th>
+                                        <th class="border-top-0">Contact</th>
+                                        <th class="border-top-0">Total Product</th>
+                                        <th class="border-top-0">Division</th>
+                                        <th class="border-top-0 text-center">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a th:href="@{/}">
+                                                    <h4 class="m-b-0 font-16">Elite Admin</h4>
+                                                </a>
+                                            </td>
+                                            <td>Single Use</td>
+                                            <td>John Doe</td>
+                                            <td>
+                                                <label class="badge bg-danger">Angular</label>
+                                            </td>
+                                            <td class="text-center">
+                                                <a th:href="@{#}" class="btn btn-info btn-sm text-white" data-bs-toggle="modal"
+                                                   data-bs-target="#modalEditUser"><span class="mdi mdi-pencil"></span></a>
+                                                <a th:href="@{#}" class="btn btn-danger btn-sm text-white"><span class="mdi mdi-delete"></span></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-4">
+                        <a href="#"
+                           class="btn btn-info btn-rounded btn-md text-white"
+                           data-bs-toggle="modal"
+                           data-bs-target="#modalCreateUser">Add User</a>
+                    </div>
+
+                    <!-- Modal Create New User-->
+                    <div
+                            class="modal fade"
+                            id="modalCreateUser"
+                            data-bs-backdrop="static"
+                            data-bs-keyboard="false"
+                            tabindex="-1"
+                            aria-labelledby="staticBackdropLabel"
+                            aria-hidden="true"
+                    >
+                        <div class="modal-dialog">
+                            <div class="modal-content p-3">
+                                <div class="modal-header d-flex align-items-center">
+                                    <h4 class="modal-title" id="myLargeModalLabel">
+                                        Create a new user.
+                                    </h4>
+                                    <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                    ></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="userName">Name</label>
+                                                    <input type="text" id="userName" class="form-control py-3" autocomplete="off"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="userEmail">Email</label>
+                                                    <input type="email" id="userEmail" class="form-control py-3" autocomplete="off"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="userDivision">Division</label>
+                                                    <select id="userDivision"
+                                                            class=" form-select form-control shadow-none py-3"
+                                                    >
+                                                        <option class="font-bold" disabled>Choose one</option>
+                                                        <option>IT</option>
+                                                        <option>Marketing</option>
+                                                        <option>Food</option>
+                                                        <option>Office</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                        <label for="userPwd">Password</label>
+                                                        <input type="password" id="userPwd" class="form-control py-3" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                        <label for="confirmPwd">Confirm Password</label>
+                                                        <input type="password" id="confirmPwd" class="form-control py-3" autocomplete="off"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="mx-auto mb-3">
+                                    <button type="submit" class="btn btn-info btn-rounded btn-md text-white">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Edit New User-->
+                    <div
+                            class="modal fade"
+                            id="modalEditUser"
+                            data-bs-backdrop="static"
+                            data-bs-keyboard="false"
+                            tabindex="-1"
+                            aria-labelledby="staticBackdropLabel"
+                            aria-hidden="true"
+                    >
+                        <div class="modal-dialog">
+                            <div class="modal-content p-3">
+                                <div class="modal-header d-flex align-items-center">
+                                    <h4 class="modal-title" id="myLargeModalLabel1">
+                                        Update user details.
+                                    </h4>
+                                    <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                    ></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form>
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="userNameUpdate">Name</label>
+                                                    <input type="text" id="userNameUpdate" class="form-control py-3" autocomplete="off"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="userEmailUpdate">Email</label>
+                                                    <input type="email" id="userEmailUpdate" class="form-control py-3" autocomplete="off"/>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12">
+                                                <div class="mb-3">
+                                                    <label for="userDivisionUpdate">Division</label>
+                                                    <select id="userDivisionUpdate"
+                                                            class=" form-select form-control shadow-none py-3"
+                                                    >
+                                                        <option class="font-bold" disabled>Choose one</option>
+                                                        <option>IT</option>
+                                                        <option>Marketing</option>
+                                                        <option>Food</option>
+                                                        <option>Office</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                        <label for="userPwdUpdate">Password</label>
+                                                        <input type="password" id="userPwdUpdate" class="form-control py-3" autocomplete="off"/>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                        <label for="confirmPwdUpdate">Confirm Password</label>
+                                                        <input type="password" id="confirmPwdUpdate" class="form-control py-3" autocomplete="off"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="mx-auto mb-3">
+                                    <button type="submit" class="btn btn-info btn-rounded btn-md text-white">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:replace="layouts/script::script"></script>
+</body>
+</html>
