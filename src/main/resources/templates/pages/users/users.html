@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="layouts/tag-head::tag_head"></div>
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <div
+        id="main-wrapper"
+        data-layout="vertical"
+        data-navbarbg="skin5"
+        data-sidebartype="full"
+        data-sidebar-position="absolute"
+        data-header-position="absolute"
+        data-boxed-layout="full"
+    >
+
+        <!-- Header Fragment -->
+        <div th:replace="layouts/header::header"></div>
+
+        <!-- Sidebar Fragment -->
+        <div th:replace="layouts/sidebar::sidebar"></div>
+
+        <div class="page-wrapper pt-0 mt-0">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+
+                        <!-- Alert Session -->
+                        <div th:if="${alert}" class="alert customize-alert alert-dismissible text-primary alert-light-primary fade show"
+                             role="alert">
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <div class="d-flex align-items-center font-weight-medium">
+                                <i data-feather="info" class="text-primary feather-sm me-2 flex-shrink-0"></i>
+                                <span th:text="${alert}"></span>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex">
+                                    <div>
+                                        <h4 th:text="${cardTitle}" class="card-title"></h4>
+                                    </div>
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="tableUsers"
+                                            class="table mb-0 table-hover align-middle text-nowrap"
+                                    >
+                                        <thead>
+                                        <tr>
+                                            <th class="border-top-0">Name</th>
+                                            <th class="border-top-0">Contact</th>
+                                            <th class="border-top-0">Total Product</th>
+                                            <th class="border-top-0">Team</th>
+                                            <th class="border-top-0 text-center">Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+<!--                                        <tr th:if="${users.isEmpty()}">-->
+<!--                                            <td colspan="5" class="text-center">-->
+<!--                                                No data available in our record.-->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+                                        <tr th:each="user : ${users}">
+                                            <td>
+                                                <a href="/">
+                                                    <h4 th:text="${user.name}" class="m-b-0 font-16"></h4>
+                                                </a>
+                                            </td>
+                                            <td th:text="${user.email}"></td>
+                                            <td>1000</td>
+                                            <td>
+                                                <label class="badge bg-warning">Angular</label>
+                                            </td>
+                                            <td class="text-center">
+<!--                                                Edit Button -->
+                                                <a th:href="@{'/user/edit/' + ${user.id}}" class="btn btn-info btn-md btn-edit text-white"><span class="mdi mdi-pencil"></span></a>
+
+<!--                                                Delete Button -->
+                                                <a onclick="if (!confirm('Are you sure want to delete this user?')) return false"
+                                                   th:href="@{'/user/delete/' + ${user.id}}" class="btn btn-danger btn-md text-white">
+                                                    <span class="mdi mdi-delete"></span>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                            <a th:href="@{/user/create}"
+                               class="btn btn-info btn-rounded btn-md text-white">Add User</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script th:replace="layouts/script::script"></script>
+</body>
+</html>

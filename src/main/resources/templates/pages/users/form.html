@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="layouts/tag-head::tag_head"></div>
+
+    <script th:replace="layouts/script::script"></script>
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<div
+        id="main-wrapper"
+        data-layout="vertical"
+        data-navbarbg="skin5"
+        data-sidebartype="full"
+        data-sidebar-position="absolute"
+        data-header-position="absolute"
+        data-boxed-layout="full"
+>
+
+    <!-- Header Fragment -->
+    <div th:replace="layouts/header::header"></div>
+
+    <!-- Sidebar Fragment -->
+    <div th:replace="layouts/sidebar::sidebar"></div>
+
+    <div class="page-wrapper pt-0 mt-0">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-md-flex border-bottom">
+                                <div>
+                                    <h4 th:text="${cardTitle}" class="card-title"></h4>
+                                </div>
+                            </div>
+                            <form th:object="${user}" method="post" th:action="@{/user/store}">
+                                <input type="hidden" name="id" th:field="*{id}">
+                                <div class="row mt-3">
+                                    <div class="col-sm-12">
+                                        <div class="mb-3">
+                                            <label for="userName">Name</label>
+                                            <input th:field="*{name}" type="text" id="userName" class="form-control py-3" required maxlength="55" autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="mb-3">
+                                            <label for="userEmail">Email</label>
+                                            <input th:field="*{email}" type="email" id="userEmail" class="form-control py-3" required maxlength="55" autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="mb-3">
+                                            <label for="userTeam">Team</label>
+                                            <select id="userTeam"
+                                                    class=" form-select form-control shadow-none py-3"
+                                            >
+                                                <option class="font-bold" disabled>Choose one</option>
+                                                <option>IT</option>
+                                                <option>Marketing</option>
+                                                <option>Food</option>
+                                                <option>Office</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                <label for="userPwd">Password</label>
+                                                <input th:field="*{password}" type="password" id="userPwd" class="form-control py-3" required minlength="8" maxlength="25" autocomplete="off"/>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                <label for="confirmPwd">Confirm Password</label>
+                                                <input type="password" id="confirmPwd" class="form-control py-3" required minlength="8" maxlength="25" autocomplete="off"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-4 col-lg-4">
+                                    <button type="submit" class="btn btn-info btn-rounded btn-md text-white">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

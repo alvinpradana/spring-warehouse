@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="layouts/tag-head::tag_head"></div>
+    <title th:text="${title}"></title>
+</head>
+
+<body>
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+<div
+        id="main-wrapper"
+        data-layout="vertical"
+        data-navbarbg="skin5"
+        data-sidebartype="full"
+        data-sidebar-position="absolute"
+        data-header-position="absolute"
+        data-boxed-layout="full"
+>
+    <div class="container-fluid bg-secondary">
+        <div class="row align-items-center justify-content-center min-vh-100">
+            <div class="col-lg-4 col-md-4 col-sm-12">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <h4 th:text="${cardTitle}" class="card-title mb-4 pb-3 border-bottom"></h4>
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="mb-2">
+                                        <label for="userName">Name</label>
+                                        <input type="text" id="userName" class="form-control py-3" autocomplete="off"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="mb-2">
+                                        <label for="userCompany">Company</label>
+                                        <input type="text" id="userCompany" class="form-control py-3" autocomplete="off"/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="mb-2">
+                                        <label for="userEmail">Email</label>
+                                        <input type="email" id="userEmail" class="form-control py-3" autocomplete="off"/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 col-lg-6 mb-2">
+                                            <label for="userPwd">Password</label>
+                                            <input type="password" id="userPwd" class="form-control py-3" autocomplete="off"/>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6 col-lg-6 mb-2">
+                                            <label for="confirmPwd">Confirm Password</label>
+                                            <input type="password" id="confirmPwd" class="form-control py-3" autocomplete="off"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row align-items-center justify-content-between">
+                                <button type="submit" class="btn btn-info btn-lg text-white font-16">Register</button>
+                                <p class="ml-auto text-muted text-right mt-3">Already registered? <a th:href="@{/login}" class="text-info">Login</a> </p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:replace="layouts/script::script"></script>
+</body>
+</html>
